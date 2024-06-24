@@ -1,9 +1,86 @@
+// import 'package:flutter/material.dart';
+
+// class logintextemail extends StatelessWidget {
+//   const logintextemail({super.key,
+//   required this.emailController,
+//   });
+//   final TextEditingController emailController;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return TextFormField(
+//       controller: emailController,
+//       maxLength: 25,
+//       keyboardType: TextInputType.emailAddress,
+//       validator: (value){
+//         if(value!.isEmpty){
+//           return 'email is required';
+//         }
+//          else if (!RegExp(
+//                 r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
+//             .hasMatch(value)) {
+//           return 'Enter a valid email address';
+//         }
+//         return null;
+//       },
+//        decoration: InputDecoration(
+//         fillColor: Color.fromARGB(255, 255, 255, 255),
+//         border: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(50),
+//           borderSide: BorderSide(
+//             color: Color.fromARGB(255, 255, 255, 255),
+//             width: 30,
+//           ),
+//         ),
+//         labelText: "Email",
+//         hintText: "Enter email",
+//         prefixIcon: Icon(Icons.email_outlined),
+//         suffixIcon: Icon(Icons.verified_user),
+//         helperText: "Enter your valid email",
+//       ),
+//     );
+//   }
+// }
+// class logintextpassword extends StatelessWidget {
+//   const logintextpassword({super.key, required this.passwordController,
+ 
+//   });
+// final TextEditingController passwordController;
+//   @override
+//   Widget build(BuildContext context) {
+//     return TextFormField(
+//       controller: passwordController,
+//       obscureText: true,
+//       maxLength: 10,
+//       validator: (value) {
+//         if(value!.isEmpty){
+//           return 'password is required';
+//         }else if(value.length<6){
+//            return 'Password must be at least 6 characters';
+//         }return null;
+//       },
+//        decoration: InputDecoration(
+//         border: OutlineInputBorder(
+//           borderRadius: BorderRadius.circular(50),
+//           borderSide: BorderSide(
+//             color: Color.fromARGB(255, 255, 255, 255),
+//             width: 2,
+//           ),
+//         ),
+//         labelText: "Password",
+//         hintText: "Enter password",
+//         prefixIcon: Icon(Icons.lock_outline_rounded),
+//         suffixIcon: Icon(Icons.verified_user),
+//         helperText: "At least 6 characters ",
+//       ),
+    
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
 
 class logintextemail extends StatelessWidget {
-  const logintextemail({super.key,
-  required this.emailController,
-  });
+  const logintextemail({super.key, required this.emailController});
   final TextEditingController emailController;
 
   @override
@@ -12,18 +89,16 @@ class logintextemail extends StatelessWidget {
       controller: emailController,
       maxLength: 25,
       keyboardType: TextInputType.emailAddress,
-      validator: (value){
-        if(value!.isEmpty){
+      validator: (value) {
+        if (value!.isEmpty) {
           return 'email is required';
-        }
-         else if (!RegExp(
-                r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
+        } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
             .hasMatch(value)) {
           return 'Enter a valid email address';
         }
         return null;
       },
-       decoration: InputDecoration(
+      decoration: InputDecoration(
         fillColor: Color.fromARGB(255, 255, 255, 255),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(50),
@@ -41,11 +116,14 @@ class logintextemail extends StatelessWidget {
     );
   }
 }
+
 class logintextpassword extends StatelessWidget {
-  const logintextpassword({super.key, required this.passwordController,
- 
+  const logintextpassword({
+    super.key,
+    required this.passwordController,
   });
-final TextEditingController passwordController;
+  final TextEditingController passwordController;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -53,13 +131,14 @@ final TextEditingController passwordController;
       obscureText: true,
       maxLength: 10,
       validator: (value) {
-        if(value!.isEmpty){
+        if (value!.isEmpty) {
           return 'password is required';
-        }else if(value.length<6){
-           return 'Password must be at least 6 characters';
-        }return null;
+        } else if (value.length < 6) {
+          return 'Password must be at least 6 characters';
+        }
+        return null;
       },
-       decoration: InputDecoration(
+      decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(50),
           borderSide: BorderSide(
@@ -71,9 +150,8 @@ final TextEditingController passwordController;
         hintText: "Enter password",
         prefixIcon: Icon(Icons.lock_outline_rounded),
         suffixIcon: Icon(Icons.verified_user),
-        helperText: "At least 6 characters ",
+        helperText: "At least 6 characters",
       ),
-    
     );
   }
 }

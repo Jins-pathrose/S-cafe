@@ -1,7 +1,15 @@
+import 'package:firstproject/adminpanel/adminHome.dart';
+import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
+import 'package:firstproject/custom/home_extract.dart';
+import 'package:firstproject/funtions/dbfunction.dart';
 import 'package:firstproject/users/kids.dart';
 import 'package:firstproject/users/mens.dart';
 import 'package:firstproject/users/womens.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+
+dbhelper help = dbhelper();
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,8 +19,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+    late Box<Addproduct> productBox = Hive.box<Addproduct>('dbname');
+  // final Box<Cart> cartBox = Hive.box<Cart>('cart');
+    @override
+  void initState() {
+    super.initState();
+    initializeData();
+  }
+
+  Future<void> initializeData() async {
+    await Hive.openBox<Addproduct>('dbname');
+    productBox = Hive.box<Addproduct>('dbname');
+    help.getall();
+  }
+
+  var dbp = dbhelper();
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(microseconds: 1), () {
+      setState(() {});
+    });
     return Scaffold(
        backgroundColor: const Color.fromARGB(255, 189, 108, 102),
        body: SingleChildScrollView(
@@ -58,48 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              width: 360,
-              height: 180,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromARGB(255, 255, 255, 255)),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            GridView.builder(
-              shrinkWrap: true, // Makes the GridView fit its children
-              physics:
-                  NeverScrollableScrollPhysics(), // Prevents the GridView from scrolling
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Number of columns
-              ),
-              itemCount: 20,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Item $index',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Shoe name '),
-                            Text('Rate $index'),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
+            homevaluelistnable()
           ],
         ),
       ),

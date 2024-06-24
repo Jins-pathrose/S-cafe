@@ -1,3 +1,5 @@
+
+
 import 'package:firstproject/custom/login_custom.dart';
 import 'package:firstproject/models/user_login.dart';
 import 'package:firstproject/users/homepage.dart';
@@ -11,7 +13,7 @@ const SAVE_KEY_NAME = 'saveUserEmail';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
- 
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -20,20 +22,21 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
-
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
             Color.fromARGB(255, 255, 255, 255),
             Color.fromARGB(255, 188, 187, 187)
-          ])),
+          ],
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
@@ -53,23 +56,22 @@ class _LoginPageState extends State<LoginPage> {
                       fontStyle: FontStyle.italic,
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: 30),
                   logintextemail(emailController: emailController),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                   logintextpassword(passwordController: passwordController),
-                  ElevatedButton( 
+                  ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
                       backgroundColor: Colors.grey,
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        login(emailController.text, passwordController.text,
-                            context);
+                        login(
+                          emailController.text,
+                          passwordController.text,
+                          context,
+                        );
                       }
                     },
                     child: Text(
@@ -77,9 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -113,7 +113,6 @@ class _LoginPageState extends State<LoginPage> {
 
   void login(String email, String password, BuildContext context) async {
     final usersBox = await Hive.openBox<User>('users');
-    // print(usersBox.values);
     User? user;
     for (var i = 0; i < usersBox.length; i++) {
       final currentUser = usersBox.getAt(i);
@@ -127,24 +126,25 @@ class _LoginPageState extends State<LoginPage> {
       sharedprefs.setBool(SAVE_KEY_NAME, true);
       sharedprefs.setString('currentUser', email);
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (home) => HomeScreen()),
-          (route) => false);
+          MaterialPageRoute(builder: (home) => HomeScreen()), (route) => false);
     } else {
       showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text('Error'),
-              content: Text('Invalid email or password'),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text('Ok'))
-              ],
-            );
-          });
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Invalid email or password'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
-   }
+}
