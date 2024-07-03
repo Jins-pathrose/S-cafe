@@ -82,6 +82,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/Scafe_Logo-removebg-preview.png
+    - assets/empty-cart-2130356-1800917.webp
+    - assets/OIP (1).jpeg
+    - assets/flat-vector-no-data-search-error-landing-concept-illustration_939213-307.png
+    - assets/flat-vector-no-data-search-error-landing-concept-illustration_939213-307-removebg-preview (1).png
+    - assets/OIP__2_-removebg-preview.png
+    - assets/confused-man-with-question-mark-concept-flat-illustration-free-vector-removebg-preview.png
+    - assets/illustration-phone-yazara-payment-ready.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

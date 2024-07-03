@@ -1,4 +1,4 @@
-import 'package:firstproject/users/cart.dart';
+import 'package:firstproject/users/cartScreen.dart';
 import 'package:firstproject/users/favourite.dart';
 import 'package:firstproject/users/homepage.dart';
 import 'package:firstproject/users/profile.dart';
@@ -17,9 +17,9 @@ class _BottomPageState extends State<BottomPage> {
   int indexNum = 0;
   List screen = [
     HomeScreen(),
-    CartPage(),
+    CartScreen(),
     SearchPage(),
-    FavPage(),
+    FavScreen(),
     ProfilePage(),
   ];
 

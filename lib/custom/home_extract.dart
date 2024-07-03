@@ -1,10 +1,15 @@
+
+
 import 'dart:io';
 
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
+import 'package:firstproject/funtions/addCart.dart';
+import 'package:firstproject/funtions/addFavourite.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
 import 'package:firstproject/users/detailscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 class homecliprect extends StatelessWidget {
   const homecliprect({super.key, required this.addproduct});
@@ -34,19 +39,39 @@ ValueListenableBuilder<List<Addproduct>> homevaluelistnable() {
   return ValueListenableBuilder(
       valueListenable: productlist,
       builder: (BuildContext context, List<Addproduct> addlist, Widget? child) {
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: addlist.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 12.0,
-            mainAxisSpacing: 12.0,
-            mainAxisExtent: 299,
-          ),
-          itemBuilder: (context, index) {
-            final addproduct = addlist.reversed.toList()[index];
-            return Padding(
+        if (addlist.isEmpty) {
+          // Show "No item found" message
+          return Center(
+            child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                   Text(
+                    "No items found❗",
+                    style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
+                  ),SizedBox(height: 50,),
+                    Image.asset(
+                        'assets/confused-man-with-question-mark-concept-flat-illustration-free-vector-removebg-preview.png'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                )),
+          );
+        } else {
+          return GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: addlist.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12.0,
+              mainAxisSpacing: 12.0,
+              mainAxisExtent: 299,
+            ),
+            itemBuilder: (context, index) {
+              final addproduct = addlist.reversed.toList()[index];
+              return Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: GestureDetector(
                   onTap: () {
@@ -88,11 +113,17 @@ ValueListenableBuilder<List<Addproduct>> homevaluelistnable() {
                                 const SizedBox(
                                   height: 8.0,
                                 ),
-                                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    
                                     Text('${addproduct.discount}% off'),
-                                    Text('₹${addproduct.price}',style: TextStyle(color: const Color.fromARGB(255, 25, 147, 29)),),
+                                    Text(
+                                      '₹${addproduct.price}',
+                                      style: TextStyle(
+                                          color: const Color.fromARGB(
+                                              255, 25, 147, 29)),
+                                    ),
                                   ],
                                 ),
                                 const SizedBox(
@@ -101,15 +132,17 @@ ValueListenableBuilder<List<Addproduct>> homevaluelistnable() {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    IconButton(
-                                      icon: Icon(
-                                        CupertinoIcons.heart_fill,
-                                      ),
-                                      onPressed: () {},
-                                    ),
+                                   IconButton(
+                                  icon: getIcon(addproduct),
+                                  onPressed: () {
+                                    addfav_button(addproduct, context);
+                                  },
+                                ),
                                     IconButton(
                                       icon: Icon(Icons.shopping_cart_outlined),
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        checkCart(addproduct, context);
+                                      },
                                     ),
                                   ],
                                 )
@@ -120,8 +153,10 @@ ValueListenableBuilder<List<Addproduct>> homevaluelistnable() {
                       ),
                     ),
                   ),
-                ));
-          },
-        );
+                ),
+              );
+            },
+          );
+        }
       });
 }

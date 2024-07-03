@@ -2,6 +2,7 @@
 
 import 'package:firstproject/custom/login_custom.dart';
 import 'package:firstproject/models/user_login.dart';
+import 'package:firstproject/users/bottom.dart';
 import 'package:firstproject/users/homepage.dart';
 import 'package:firstproject/widgets/register.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
       sharedprefs.setBool(SAVE_KEY_NAME, true);
       sharedprefs.setString('currentUser', email);
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (home) => HomeScreen()), (route) => false);
+          MaterialPageRoute(builder: (home) => BottomPage()), (route) => false);
     } else {
       showDialog(
         context: context,
