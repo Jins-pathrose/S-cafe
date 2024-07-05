@@ -21,11 +21,15 @@ class Addproduct extends HiveObject {
   @HiveField(5)
   int? id;
 
+  @HiveField(6)
+  String? selectedSize; // Add this field
+
   Addproduct(
       {required this.name,
       required this.price,
       required this.category,
       required this.discount,
       required this.image,
-      required this.id});
+      required this.id,
+      this.selectedSize});
 }

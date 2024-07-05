@@ -6,7 +6,8 @@ import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
 import 'package:firstproject/funtions/addCart.dart';
 import 'package:firstproject/funtions/addFavourite.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
-import 'package:firstproject/users/detailscreen.dart';
+import 'package:firstproject/users/detailPage.dart';
+import 'package:firstproject/users/size.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -141,7 +142,7 @@ ValueListenableBuilder<List<Addproduct>> homevaluelistnable() {
                                     IconButton(
                                       icon: Icon(Icons.shopping_cart_outlined),
                                       onPressed: () {
-                                        checkCart(addproduct, context);
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SizeScreen(products: addproduct)));
                                       },
                                     ),
                                   ],

@@ -13,7 +13,7 @@ class Oredrplace extends HiveObject{
   String productPrice;
 
   @HiveField(3)
-  String ProductDiscount;
+  String Productsize;
 
   @HiveField(4)
   int productCount;
@@ -52,7 +52,7 @@ class Oredrplace extends HiveObject{
       {required this.id,
       required this.productName,
       required this.productPrice,
-      required this.ProductDiscount,
+      required this.Productsize,
       required this.productImage,
       required this.totalPrice,
       required this.productCount,

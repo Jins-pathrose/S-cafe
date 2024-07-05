@@ -1,36 +1,59 @@
 
-import 'dart:io';
 
+import 'dart:io';
 import 'package:clippy_flutter/arc.dart';
 import 'package:firstproject/funtions/addCart.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
+import 'package:firstproject/models/cart_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-class DetailScreen extends StatefulWidget {
-  DetailScreen({
+class SizeScreen extends StatefulWidget {
+  SizeScreen({
     required this.products,
     super.key,
   });
   dynamic products;
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  State<SizeScreen> createState() => _SizeScreenState();
 }
 
-class _DetailScreenState extends State<DetailScreen> {
+class _SizeScreenState extends State<SizeScreen> {
   List<String> sizes = ['7', '7.5', '8', '8.5', '9'];
   String? _selectedSize;
-    var help = dbhelper();
+  var help = dbhelper();
+  late Box<Cart> cartBox;
 
+  @override
+  void initState() {
+    super.initState();
+    openBox();
+  }
+
+  Future<void> openBox() async {
+    cartBox = await Hive.openBox<Cart>('cart');
+    setState(() {}); // Trigger rebuild to ensure the box is ready
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (!Hive.isBoxOpen('cart')) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 189, 108, 102),
+          title: Text("Details"),
+          centerTitle: true,
+        ),
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 189, 108, 102),
-        title: Text("Details"),
+        title: Text("Select Size"),
         centerTitle: true,
       ),
       body: Padding(
@@ -172,9 +195,19 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: 300,
                     child: ElevatedButton(
                       onPressed: () {
-                        setState(() {
-                          checkCart(widget.products, context);
-                        });
+                        if (_selectedSize != null) {
+                          setState(() {
+                            widget.products.selectedSize = _selectedSize;
+                            checkCart(widget.products, context);
+                            
+                          });
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text('Please select a size first!'),
+                            duration: Duration(seconds: 2),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromARGB(255, 255, 230, 0),

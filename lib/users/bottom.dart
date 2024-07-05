@@ -1,8 +1,8 @@
 import 'package:firstproject/users/cartScreen.dart';
 import 'package:firstproject/users/favourite.dart';
 import 'package:firstproject/users/homepage.dart';
-import 'package:firstproject/users/profile.dart';
 import 'package:firstproject/users/search.dart';
+import 'package:firstproject/users/useraccount/account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -20,7 +20,7 @@ class _BottomPageState extends State<BottomPage> {
     CartScreen(),
     SearchPage(),
     FavScreen(),
-    ProfilePage(),
+    ProfileScreen(),
   ];
 
   @override

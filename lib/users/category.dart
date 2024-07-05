@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
 import 'package:firstproject/funtions/addFavourite.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
-import 'package:firstproject/users/detailscreen.dart';
+import 'package:firstproject/users/size.dart';
 import 'package:flutter/material.dart';
 
 class categoryScreen extends StatefulWidget {
@@ -109,7 +109,7 @@ class _categoryScreenState extends State<categoryScreen> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      DetailScreen(
+                                                      SizeScreen(
                                                         products: addproducts,
                                                       )));
                                         },

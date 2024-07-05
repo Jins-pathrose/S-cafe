@@ -1,13 +1,14 @@
-
 import 'dart:io';
 
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
+
 import 'package:firstproject/funtions/addCart.dart';
 import 'package:firstproject/funtions/addFavourite.dart';
 import 'package:firstproject/funtions/addproduct.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
 import 'package:firstproject/models/favourit.dart';
-import 'package:firstproject/users/detailscreen.dart';
+import 'package:firstproject/users/detailPage.dart';
+import 'package:firstproject/users/size.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -21,18 +22,18 @@ class FavScreen extends StatefulWidget {
 
 class _FavScreenState extends State<FavScreen> {
   late Box<Addfavorite> addfavBox = Hive.box<Addfavorite>('add_fav');
- 
+
   @override
   void initState() {
     super.initState();
     getfavorite();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 189, 108, 102),
+        backgroundColor: const Color.fromARGB(255, 189, 108, 102),
         title: Text("Favorite"),
         centerTitle: true,
       ),
@@ -53,7 +54,8 @@ class _FavScreenState extends State<FavScreen> {
               ),
             )
           : Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 10,left: 6,right: 6),
+              padding:
+                  const EdgeInsets.only(top: 20, bottom: 10, left: 6, right: 6),
               child: Column(
                 children: [
                   ValueListenableBuilder(
@@ -131,7 +133,7 @@ class _FavScreenState extends State<FavScreen> {
                                             const SizedBox(
                                               height: 8.0,
                                             ),
-                                            Text(addfav.price!),
+                                            Text('₹${addfav.price!}'),
                                             const SizedBox(
                                               height: 0,
                                             ),
@@ -153,7 +155,16 @@ class _FavScreenState extends State<FavScreen> {
                                                   icon: Icon(Icons
                                                       .shopping_cart_outlined),
                                                   onPressed: () {
-                                                    checkCart(
+                                                    // Navigator.push(
+                                                    //   context,
+                                                    //   MaterialPageRoute(
+                                                    //     builder: (context) =>
+                                                    //         SizeScreen(
+                                                    //             products:
+                                                    //                 addfav),
+                                                    //   ),
+                                                    // );
+                                                     checkCart(
                                                         Addproduct(
                                                             name: addfav.name,
                                                             price: addfav.price,
