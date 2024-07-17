@@ -25,6 +25,7 @@ class _TrackScreenState extends State<TrackScreen> {
     [
       TextDto("Your order is out for delivery", null),
     ],
+    
     [
       TextDto("Your order has been delivered", null),
     ],
@@ -36,7 +37,7 @@ class _TrackScreenState extends State<TrackScreen> {
       appBar: AppBar(
         title: const Text("Order Tracker"),
         centerTitle: true,
-        backgroundColor: Colors.redAccent.shade700,
+        backgroundColor: const Color.fromARGB(255, 189, 108, 102),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -61,10 +62,3 @@ class _TrackScreenState extends State<TrackScreen> {
   }
 }
 
-// void main() {
-//   runApp(
-//     MaterialApp(
-//       home: TrackScreen(),
-//     ),
-//   );
-// }

@@ -1,6 +1,7 @@
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
 import 'package:firstproject/funtions/addproduct.dart';
 import 'package:firstproject/models/favourit.dart';
+import 'package:firstproject/users/favourite.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -38,20 +39,26 @@ void addfav_button(Addproduct addproduct, BuildContext context) async {
 }
 
 void removefav(BuildContext context, int? id) {
-  showDialog(context: context, builder: (context) {
-    return AlertDialog(
-      title: Text('Remove Favorite'),
-      content: Text('Do you want remove'),
-      actions: [
-        ElevatedButton(onPressed: () {
-          deletefav(context, id!);
-        }, child: Text('yes')),
-        ElevatedButton(onPressed: () {
-          Navigator.pop(context);
-        }, child: Text('No'))
-      ],
-    );
-  });
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Remove Favorite'),
+          content: Text('Do you want remove'),
+          actions: [
+            ElevatedButton(
+                onPressed: () {
+                  deletefav(context, id!);
+                },
+                child: Text('yes')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('No'))
+          ],
+        );
+      });
 }
 
 void deletefav(context, int id) async {
@@ -60,6 +67,8 @@ void deletefav(context, int id) async {
   getfavorite();
 
   Navigator.pop(context);
+
+
 }
 
 Icon getIcon(addproducts) {

@@ -1,10 +1,10 @@
-
-
 import 'dart:io';
 import 'package:clippy_flutter/arc.dart';
+import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
 import 'package:firstproject/funtions/addCart.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
 import 'package:firstproject/models/cart_model.dart';
+import 'package:firstproject/models/favourit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -29,7 +29,7 @@ class _SizeScreenState extends State<SizeScreen> {
   @override
   void initState() {
     super.initState();
-    openBox();
+    openBox(); // Open the box only once in initState
   }
 
   Future<void> openBox() async {
@@ -74,7 +74,7 @@ class _SizeScreenState extends State<SizeScreen> {
               child: Container(
                 height: 400,
                 width: double.infinity,
-                color: Color.fromARGB(255, 213, 211, 211),
+                color: Color.fromARGB(255, 230, 187, 187),
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: Column(
@@ -126,19 +126,23 @@ class _SizeScreenState extends State<SizeScreen> {
                               itemCount: sizes.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 4.0),
                                   child: ChoiceChip(
                                     label: Text(sizes[index]),
                                     selected: _selectedSize == sizes[index],
                                     onSelected: (bool selected) {
                                       setState(() {
-                                        _selectedSize = selected ? sizes[index] : null;
+                                        _selectedSize =
+                                            selected ? sizes[index] : null;
                                       });
                                     },
                                     backgroundColor: Colors.grey[200],
                                     selectedColor: Colors.blue,
                                     labelStyle: TextStyle(
-                                      color: _selectedSize == sizes[index] ? Colors.white : Colors.black,
+                                      color: _selectedSize == sizes[index]
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                                   ),
                                 );
@@ -162,14 +166,15 @@ class _SizeScreenState extends State<SizeScreen> {
                                 Row(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 5),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 5),
                                       child: Icon(
                                         CupertinoIcons.clock,
                                         color: Colors.red,
                                       ),
                                     ),
                                     Text(
-                                      "3 Days",
+                                      "5 Days",
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ],
@@ -197,12 +202,25 @@ class _SizeScreenState extends State<SizeScreen> {
                       onPressed: () {
                         if (_selectedSize != null) {
                           setState(() {
-                            widget.products.selectedSize = _selectedSize;
-                            checkCart(widget.products, context);
-                            
+                            if (_selectedSize != null) {
+                              setState(() {
+                                widget.products.selectedSize = _selectedSize;
+                                checkCart(cartBox, widget.products,
+                                    context); // Pass cartBox instance
+                              });
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Please select a size first!'),
+                                  duration: Duration(seconds: 2),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
                           });
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
                             content: Text('Please select a size first!'),
                             duration: Duration(seconds: 2),
                             backgroundColor: Colors.red,
@@ -231,4 +249,3 @@ class _SizeScreenState extends State<SizeScreen> {
     );
   }
 }
-

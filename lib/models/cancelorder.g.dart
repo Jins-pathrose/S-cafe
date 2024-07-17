@@ -19,7 +19,7 @@ class CancelorderAdapter extends TypeAdapter<Cancelorder> {
     return Cancelorder(
       name: fields[1] as String,
       price: fields[2] as String,
-      about: fields[3] as String,
+      size: fields[3] as String,
       image: fields[4] as String,
       deliveryAddress: fields[5] as String,
       deliveryName: fields[6] as String,
@@ -42,7 +42,7 @@ class CancelorderAdapter extends TypeAdapter<Cancelorder> {
       ..writeByte(2)
       ..write(obj.price)
       ..writeByte(3)
-      ..write(obj.about)
+      ..write(obj.size)
       ..writeByte(4)
       ..write(obj.image)
       ..writeByte(5)

@@ -21,6 +21,9 @@ class Addfavorite extends HiveObject {
   @HiveField(5)
   int? id;
 
+  @HiveField(6)
+  String? selectedSize;
+
   Addfavorite({
     required this.name,
     required this.price,
@@ -28,5 +31,6 @@ class Addfavorite extends HiveObject {
     required this.discount,
     required this.category,
     required this.id,
+    this.selectedSize
   });
 }

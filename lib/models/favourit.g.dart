@@ -23,13 +23,14 @@ class AddfavoriteAdapter extends TypeAdapter<Addfavorite> {
       discount: fields[3] as String?,
       category: fields[4] as String?,
       id: fields[5] as int?,
+      selectedSize: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Addfavorite obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class AddfavoriteAdapter extends TypeAdapter<Addfavorite> {
       ..writeByte(4)
       ..write(obj.category)
       ..writeByte(5)
-      ..write(obj.id);
+      ..write(obj.id)
+      ..writeByte(6)
+      ..write(obj.selectedSize);
   }
 
   @override

@@ -45,7 +45,7 @@ class _DetailsOrderscreenState extends State<DetailsOrderscreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.redAccent.shade700,
+        backgroundColor: const Color.fromARGB(255, 189, 108, 102),
           centerTitle: true,
           iconTheme: IconThemeData(color: const Color.fromARGB(255, 0, 0, 0)),
           title: Text(
@@ -112,7 +112,7 @@ class _DetailsOrderscreenState extends State<DetailsOrderscreen> {
                           ),
                           Align(
                               alignment: Alignment.bottomLeft,
-                              child: Text(widget.details)),
+                              child: Text('Size : ${widget.details}')),
                           SizedBox(
                             height: 20,
                           )

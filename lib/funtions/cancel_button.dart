@@ -1,3 +1,5 @@
+
+
 import 'package:firstproject/funtions/cancel.dart';
 import 'package:firstproject/models/cancelorder.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,7 @@ Future<void> cancelbutton(ordercancel, BuildContext context) async {
   final cancel = Cancelorder(
       name: ordercancel!.productName,
       price: ordercancel.productPrice,
-      about: ordercancel.productabout,
+      size: ordercancel.productsize,
       image: ordercancel.productImage,
       deliveryAddress: ordercancel.deliveryAddress,
       deliveryName: ordercancel.deliveryName,

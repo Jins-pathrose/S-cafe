@@ -93,9 +93,9 @@ class _DetailScreenState extends State<DetailScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '₹${widget.products.price}',
+                                  '₹ ${widget.products.price}',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 40,
                                     fontWeight: FontWeight.bold,
                                     color: Color.fromARGB(255, 15, 137, 19),
                                   ),
@@ -105,7 +105,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             Row(
                               children: [
                                 Text(
-                                  '%${widget.products.discount} off',
+                                  '% ${widget.products.discount} off',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -120,24 +120,47 @@ class _DetailScreenState extends State<DetailScreen> {
                       Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: 50),
+                            padding: EdgeInsets.symmetric(vertical: 0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  "Available sizes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 16,
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Available Size  \n',
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 24),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            ' 👟 7\n 👟 7.5\n 👟 8\n 👟 8.5\n 👟 9',
+                                        style: TextStyle(
+                                            color:
+                                                Color.fromARGB(255, 71, 41, 29),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                                  textAlign: TextAlign.justify,
                                 ),
-                                Row(
+                                Column(
                                   children: [
                                     Text(
-                                      "7 , 7.5 , 8 , 8.5 , 9",
+                                      "Delivery within",
                                       style: TextStyle(fontSize: 16),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.clock,
+                                          color: Colors.red,
+                                        ),
+                                        Text(
+                                          " 5 Days",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -148,38 +171,18 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                       Column(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 50),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Delivery within",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: 16,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 5),
-                                      child: Icon(
-                                        CupertinoIcons.clock,
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    Text(
-                                      "3 Days",
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          Image.asset(
+                            'assets/Scafe_Logo-removebg-preview.png',
+                            width: 50,
+                            height: 50,
+                          ),
+                          Text(
+                            "SCAFE providing DISCOUNT for every product",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 16,
+                                color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ],
                       )
@@ -191,13 +194,11 @@ class _DetailScreenState extends State<DetailScreen> {
             SizedBox(height: 20),
             Center(
               child: Text(
-                "SCAFE providing DISCOUNT for every product",
+                "🚚 FREE DELIVERY AVAILABLE NOW",
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 16,
-                  color: Color.fromARGB(255, 155, 9, 41)
-                ),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color.fromARGB(255, 155, 9, 41)),
               ),
             )
           ],

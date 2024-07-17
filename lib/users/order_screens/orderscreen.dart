@@ -22,8 +22,8 @@ class _OrderScreenState extends State<OrderScreen> {
           title: Text("My Orders"),
           centerTitle: true,
           bottom: TabBar(tabs: const [
-            Tab(child: Text('Order')),
-            Tab(child: Text('Cancel'))
+            Tab(child: Text('Order',style: TextStyle(color: Colors.white),)),
+            Tab(child: Text('Cancel',style: TextStyle(color: Colors.white),))
           ]),
           
         ),

@@ -14,7 +14,7 @@ Future<void> addtoorder(Oredrplace value) async {
           id: id,
           productName: data!.productName,
           productPrice: data.productPrice,
-          Productsize: data.Productsize,
+          productsize: data.productsize,
           productImage: data.productImage,
           totalPrice: data.totalPrice,
           productCount: data.productCount,

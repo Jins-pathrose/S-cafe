@@ -40,14 +40,14 @@ class orderfulldetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                "₹50",
+                "Free",
                 style: TextStyle(color: Colors.green),
               ),
               SizedBox(
                 height: 18,
               ),
            Text(
-  "₹${widget.total * widget.count + 50}",
+  "₹${widget.total * widget.count}",
   style: TextStyle(
     fontSize: 14,  // You can adjust the font size as needed
     fontWeight: FontWeight.bold,

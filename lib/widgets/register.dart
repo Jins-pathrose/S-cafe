@@ -1,4 +1,5 @@
 
+
 import 'dart:io';
 
 import 'package:firstproject/custom/signup_custom.dart';
@@ -73,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 208, 137, 132),
+      backgroundColor: const Color.fromARGB(255, 208, 137, 132),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -81,11 +82,11 @@ class _RegisterPageState extends State<RegisterPage> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 0,
                   width: 500,
                 ),
-                Text(
+                const Text(
                   'Register',
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 40),
                 ),
@@ -96,48 +97,48 @@ class _RegisterPageState extends State<RegisterPage> {
                     backgroundImage: _selectedImage != null
                         ? FileImage(File(_selectedImage!))
                         : null,
-                    child: _selectedImage == null ? Text('Add photo') : null,
+                    child: _selectedImage == null ? const Text('Add photo') : null,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 TextFormField(
                   controller: _emailController,
-                  decoration: InputDecoration(labelText: 'Email'),
+                  decoration: const InputDecoration(labelText: 'Email'),
                   validator: _validateEmail,
                   keyboardType: TextInputType.emailAddress,
                 ),
                 TextFormField(
                   controller: _nameController,
-                  decoration: InputDecoration(labelText: 'Name'),
+                  decoration: const InputDecoration(labelText: 'Name'),
                   validator: _validateName,
                 ),
                 TextFormField(
                   controller: _phoneController,
-                  decoration: InputDecoration(labelText: 'Phone Number'),
+                  decoration: const InputDecoration(labelText: 'Phone Number'),
                   keyboardType: TextInputType.number,
                   validator: _validatePhoneNumber,
                 ),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: InputDecoration(labelText: 'Password'),
+                  decoration: const InputDecoration(labelText: 'Password'),
                   obscureText: true,
                   validator: _validatePassword,
                 ),
                 TextFormField(
                   controller: _confirmPasswordController,
-                  decoration: InputDecoration(labelText: 'Confirm Password'),
+                  decoration: const InputDecoration(labelText: 'Confirm Password'),
                   obscureText: true,
                   validator: _validateConfirmPassword,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
                       if (_selectedImage == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text('Please select an image'),
                           ),
                         );
@@ -154,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
                     }
                   },
@@ -166,7 +167,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(9),
                     ),
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.center,
                       child: Text(
                         'SIGN UP',
@@ -188,7 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _selectedImage1() async {
-    final selectedimg1 = await picker.pickImage(source: ImageSource.camera);
+    final selectedimg1 = await picker.pickImage(source: ImageSource.gallery);
     if (selectedimg1 != null) {
       setState(() {
         _selectedImage = selectedimg1.path;
@@ -253,7 +254,5 @@ Future<void> getall2() async {
   final save = await Hive.openBox<User>('users');
   userslist.value.clear();
   userslist.value.addAll(save.values);
-  // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
   userslist.notifyListeners();
 }
-

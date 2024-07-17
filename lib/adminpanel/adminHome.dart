@@ -1,6 +1,11 @@
 import 'package:firstproject/adminpanel/adminproduct/product_list.dart';
+import 'package:firstproject/adminpanel/userlist.dart';
 import 'package:firstproject/custom/adminadditem.dart';
+import 'package:firstproject/custom/adminhome_order.dart';
+import 'package:firstproject/main.dart';
+import 'package:firstproject/widgets/welcom.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminHome extends StatefulWidget {
   const AdminHome({super.key});
@@ -67,7 +72,7 @@ class _AdminHomeState extends State<AdminHome> {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-          color: Color.fromARGB(255, 139, 133, 133)),
+                      color: Color.fromARGB(255, 139, 133, 133)),
                   child: ListTile(
                     title: Text(
                       'Product List',
@@ -84,11 +89,88 @@ class _AdminHomeState extends State<AdminHome> {
                     },
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Color.fromARGB(255, 139, 133, 133)),
+                  // clipBehavior: Clip.antiAlias,
+                  child: ListTile(
+                    title: Text(
+                      'Users List',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UsersListScreen()));
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                adminhomeorderdeteail(),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Color.fromARGB(255, 139, 133, 133)),
+                  // clipBehavior: Clip.antiAlias,
+                  child: ListTile(
+                    title: Text(
+                      'Log out',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                    onTap: () {
+                      AdminLogout(context);
+                    },
+                  ),
+                )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void AdminLogout(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: Text('Logout'),
+              content: Text('You Want Logout application'),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      Logouting(context);
+                    },
+                    child: Text('YES')),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('NO')),
+              ]);
+        });
+  }
+
+  // ignore: non_constant_identifier_names
+  void Logouting(BuildContext ctx) async {
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>Welcompage()), (route) => false);
+    final shared = await SharedPreferences.getInstance();
+    shared.setBool(SAVE_KEY, false);
   }
 }
