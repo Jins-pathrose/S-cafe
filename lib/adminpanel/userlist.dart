@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
-import 'package:firstproject/adminpanel/adminHome.dart';
+import 'package:firstproject/adminpanel/admin_home.dart';
 import 'package:firstproject/models/user_login.dart';
 import 'package:firstproject/widgets/register.dart';
 import 'package:flutter/material.dart';

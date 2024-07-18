@@ -88,7 +88,7 @@ class _AboutScreenState extends State<AboutScreen> {
                             color: Color.fromARGB(255, 41, 5, 185),
                           ),
                         ),
-                        Text('      VERSION  :  0.0.1',style: TextStyle(fontWeight: FontWeight.w300),)
+                        Text('      VERSION  :  1.0.0',style: TextStyle(fontWeight: FontWeight.w300),)
                       ],
                     ),
                   ],

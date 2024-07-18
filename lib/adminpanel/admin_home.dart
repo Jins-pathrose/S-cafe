@@ -1,6 +1,6 @@
 import 'package:firstproject/adminpanel/adminproduct/product_list.dart';
 import 'package:firstproject/adminpanel/userlist.dart';
-import 'package:firstproject/custom/adminadditem.dart';
+import 'package:firstproject/custom/admin_additem.dart';
 import 'package:firstproject/custom/adminhome_order.dart';
 import 'package:firstproject/main.dart';
 import 'package:firstproject/widgets/welcom.dart';

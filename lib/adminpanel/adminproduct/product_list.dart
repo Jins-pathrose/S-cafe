@@ -1,5 +1,5 @@
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
-import 'package:firstproject/adminpanel/adminproduct/productedit.dart';
+import 'package:firstproject/adminpanel/adminproduct/product_edit.dart';
 import 'package:firstproject/adminpanel/adminproduct/productlist_extract.dart';
 import 'package:firstproject/funtions/dbfunction.dart';
 import 'package:flutter/material.dart';

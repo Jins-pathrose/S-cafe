@@ -1,4 +1,4 @@
-import 'package:firstproject/users/cartScreen.dart';
+import 'package:firstproject/users/cart_screen.dart';
 import 'package:firstproject/users/favourite.dart';
 import 'package:firstproject/users/homepage.dart';
 import 'package:firstproject/users/search.dart';

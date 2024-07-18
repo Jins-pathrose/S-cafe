@@ -1,7 +1,7 @@
 
 import 'dart:io';
 
-import 'package:firstproject/address/addressScreen.dart';
+import 'package:firstproject/address/address_screen.dart';
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
 import 'package:firstproject/funtions/addCart.dart';
 import 'package:firstproject/funtions/dbfunction.dart';

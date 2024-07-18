@@ -1,9 +1,9 @@
 import 'package:firstproject/address/add_address.dart';
-import 'package:firstproject/address/addressEdit.dart';
+import 'package:firstproject/address/address_edit.dart';
 import 'package:firstproject/funtions/address_Edit.dart';
 import 'package:firstproject/funtions/address_function.dart';
 import 'package:firstproject/models/address.dart';
-import 'package:firstproject/users/placeorder/paymentScreen.dart';
+import 'package:firstproject/users/placeorder/payment_screen.dart';
 import 'package:flutter/material.dart';
 
 class ViewAddress extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:firstproject/adminpanel/adminHome.dart';
+import 'package:firstproject/adminpanel/admin_home.dart';
 import 'package:firstproject/main.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

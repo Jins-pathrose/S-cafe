@@ -1,7 +1,7 @@
 import 'package:firstproject/adminpanel/adminmodel/product_model.dart';
 import 'package:firstproject/models/cart_model.dart';
 import 'package:firstproject/models/favourit.dart';
-import 'package:firstproject/users/cartScreen.dart';
+import 'package:firstproject/users/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 

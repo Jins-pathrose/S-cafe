@@ -1,5 +1,5 @@
 // import 'package:firstproject/admin/adminlogin.dart';
-import 'package:firstproject/adminpanel/adminlogin.dart';
+import 'package:firstproject/adminpanel/admin_login.dart';
 import 'package:firstproject/users/homepage.dart';
 import 'package:firstproject/widgets/login.dart';
 import 'package:firstproject/widgets/register.dart';
